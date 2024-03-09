@@ -9,10 +9,11 @@
   --pink: #F185B8;
   --purple: #9292F6;
   --blue: #88CBFB;
-  --grey: #3A3B4A;
+  --grey: #232326;
   --light_text: #f2efef;
   --dark_text: #393839;
   --faint_text: #3a3b4aa6;
+  --white: #fff;
 }
 
 .nav_link {
@@ -48,5 +49,83 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+
+/* Sign in form */
+
+.signin_form {
+  color: var(--dark_text);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 2rem 1.5rem;
+  max-width: 40vw;
+  border-radius: 7px;
+  background-color: var(--white);
+  margin: auto;
+  box-shadow: 3px 3px 8px 0px var(--grey);
+  min-width: 260px;
+  min-height: 320px;
+}
+.signin_form_wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.form_header {
+  /* margin-bottom: 0rem; */
+  font-size: larger;
+  font-weight: 600;
+}
+.form_element {
+  width: 100%;
+  /* background-color: aqua; */
+}
+.input_field {
+  padding: 1rem 0.5rem;
+  width: 100%;
+  outline: none;
+  border: none;
+  border: 1px solid rgba(56, 58, 59, 0.2);
+  border-radius: 4px;
+  font-weight: 300;
+  font-size: 16px;
+}
+.btn {
+  background-color: var(--grey);
+  border-radius: 2px;
+  max-width: fit-content;
+  padding: 0.5rem 1.5rem;
+  color: var(--light_text);
+  outline: none;
+  border: none;
+  transition: all 400ms ease; 
+}
+.btn:hover {
+  opacity: 0.9;
+}
+.form_footer {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 200;
+  font-size: 12px;
+}
+.signup_link > a {
+  color: var(--blue);
+  transition: all 400ms ease;
+}
+.signup_link > a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* media queries for tablet and desktop views */
+@media (min-width: 600px){
+  .signin_form {
+      min-width: 400px;
+      min-height: 450px;
   }
 }

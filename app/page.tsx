@@ -15,7 +15,7 @@ export default function Home() {
               Fusce tempor viverra massa.
             </p>
           </div>
-          <button className="bg-purple text-light_text hero_button p-2 rounded-sm font-bold text-lg">
+          <button className="bg-grey text-light_text hero_button p-2 rounded-sm font-bold text-lg">
             Start learning
           </button>
         </div>
@@ -30,7 +30,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="bg-pink w-[200px] h-[200px] lg:w-[400px] lg:h-[400px] rounded-full absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[-100] blur-2xl"></div>
+      {/* <div className="bg-pink w-[200px] h-[200px] lg:w-[400px] lg:h-[400px] rounded-full absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[-100] blur-2xl"></div> */}
     </main>
   );
 }
