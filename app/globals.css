@@ -10,6 +10,9 @@
   --purple: #9292F6;
   --blue: #88CBFB;
   --grey: #3A3B4A;
+  --light_text: #DCDCDC;
+  --dark_text: #393839;
+  --faint_text: #3a3b4aa6;
 }
 
 /* @media (prefers-color-scheme: dark) {
