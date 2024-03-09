@@ -3,9 +3,9 @@ import heroImg from '@/public/assets/hero_img.png';
 
 export default function Home() {
   return (
-    <main className="font-inter hero_page min-h-screen relative">
-      <div className="hero_wrap min-h-screen flex flex-col w-[90vw] lg:w-[100vw] mx-auto justify-between lg:flex-row">
-        <div className="left p-[0.5rem] lg:p-6 h-[50vh] lg:h-[100vh] lg:w-[50vw] flex flex-col items-start justify-center gap-[1rem]">
+    <main className="font-inter hero_page min-h-[92vh] relative">
+      <div className="hero_wrap min-h-[92vh] flex flex-col w-[90vw] lg:w-[100vw] mx-auto justify-between lg:flex-row">
+        <div className="left p-[0.5rem] lg:p-6 h-[46vh] lg:h-[92vh] lg:w-[50vw] flex flex-col items-start justify-center gap-[1rem]">
           <div className="hero_heading">
             <h1 className="text-3xl/8 font-extrabold p-2 text-dark_text">Accelerate your learning by learning <span className="text-pink">1 word a day</span></h1>
           </div>
@@ -19,7 +19,7 @@ export default function Home() {
             Start learning
           </button>
         </div>
-        <div className="right p-[1rem] lg:p-4 h-[50vh] lg:h-[100vh] lg:w-[50vw] flex lg:items-center lg:justify-center">
+        <div className="right p-[1rem] lg:p-4 h-[46vh] lg:h-[92vh] lg:w-[50vw] flex lg:items-center lg:justify-center">
           <div className="">
             <Image
               src={heroImg}

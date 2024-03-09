@@ -10,9 +10,21 @@
   --purple: #9292F6;
   --blue: #88CBFB;
   --grey: #3A3B4A;
-  --light_text: #DCDCDC;
+  --light_text: #f2efef;
   --dark_text: #393839;
   --faint_text: #3a3b4aa6;
+}
+
+.nav_link {
+  padding: 1rem;
+  min-height: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 300ms ease;
+}
+.nav_link:hover {
+  border-bottom: 3px solid var(--purple);
 }
 
 /* @media (prefers-color-scheme: dark) {
