@@ -4,6 +4,7 @@ import axios from 'axios'
 // import useSound from 'use-sound';
 import Input from '@/components/Input';
 import Button, { ButtonProps } from '@/components/Button'
+import SearchResult from '@/components/SearchResult'
 
  const BoopButton = () => {
   // const [play] = useSound("https://api.dictionaryapi.dev/media/pronunciations/en/travel-au.mp3");
@@ -51,8 +52,8 @@ const WordLookUp = () => {
         <Input { ...inputFields} />
         <Button { ...buttonFields } />
         <p>{wordSearchString}</p>
-        {searchResult && <p>{ JSON.stringify(searchResult) }</p>}
       </form>
+      <SearchResult data={searchResult} />
     </div>
   )
 };
