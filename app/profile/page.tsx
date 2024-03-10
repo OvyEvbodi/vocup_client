@@ -1,5 +1,11 @@
+import BoopButton from "@/components/WordLookUp"
 const Profile = () => {
-    <p>yo</p>
+    return (
+    <main>
+        <p>yo</p>
+        <BoopButton />
+    </main>
+    )
 }
 
 export default Profile

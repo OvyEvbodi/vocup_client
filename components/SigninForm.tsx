@@ -2,7 +2,7 @@ const SigninForm = () => {
     return (
         <div className="signin_form_wrap">
             <form className="signin_form" id="signin_form">
-                <h2 className="form_header">Signin</h2>
+                <h2 className="form_header">Welcome, please sign in</h2>
                 <div className="form_element">
                     <input className="input_field" id="username" name="name" type="text" placeholder="Enter Username"/>
                 </div>

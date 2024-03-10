@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import heroImg from '@/public/assets/hero_img.png';
+import WordLookUp from '@/components/WordLookUp';
 
 export default function Home() {
   return (
@@ -31,6 +32,7 @@ export default function Home() {
         </div>
       </div>
       {/* <div className="bg-pink w-[200px] h-[200px] lg:w-[400px] lg:h-[400px] rounded-full absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[-100] blur-2xl"></div> */}
+      <WordLookUp />
     </main>
   );
 }
