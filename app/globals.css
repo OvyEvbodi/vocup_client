@@ -122,6 +122,11 @@
   text-decoration: underline;
 }
 
+.result_field {
+  max-width: 100%;
+}
+
+
 /* media queries for tablet and desktop views */
 @media (min-width: 600px){
   .signin_form {
