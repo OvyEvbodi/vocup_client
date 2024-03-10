@@ -1,14 +1,15 @@
 "use client"
 import { useState } from 'react'
 import axios from 'axios'
-import useSound from 'use-sound';
+// import useSound from 'use-sound';
 import Input from '@/components/Input';
 import Button, { ButtonProps } from '@/components/Button'
 
  const BoopButton = () => {
-  const [play] = useSound("https://api.dictionaryapi.dev/media/pronunciations/en/travel-au.mp3");
+  // const [play] = useSound("https://api.dictionaryapi.dev/media/pronunciations/en/travel-au.mp3");
 
-  return <button onClick={play}>Sound!</button>;
+  // return <button onClick={play}>Sound!</button>;
+  return <button>Play Sound!</button>;
 };
 
 const WordLookUp = () => {
