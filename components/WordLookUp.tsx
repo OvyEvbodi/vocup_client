@@ -47,8 +47,8 @@ const WordLookUp = () => {
   }
 
   return (
-    <div className='bg-gray-400 p-6 min-h-[100vh]'>
-      <form className='bg-gray-300 p-6'>
+    <div className='bg-gray-300 text-dark_text p-6 min-h-[100vh]'>
+      <form className='bg-gray-200 p-6'>
         <Input { ...inputFields} />
         <Button { ...buttonFields } />
         <p>{wordSearchString}</p>
