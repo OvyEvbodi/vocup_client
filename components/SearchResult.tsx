@@ -22,9 +22,9 @@ const searchResult: NextPage<SearchResultProps> = (word) => {
         <br/>
         { data && <div className="max-w-full">phonetic: {data.phonetic}</div> }
         <br/>
-        <div> audio: 
+       { data && <div> audio: 
           { data && data.phonetics.length > 0 && <span> {data.phonetics.length > 1 ? data.phonetics[1].audio : data.phonetics[0].audio}</span> }
-        </div>
+        </div> }
         <br/>
         { data && 
           <div>{data.meanings.map((meaning:any, index:any) => 
