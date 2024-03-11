@@ -10,7 +10,10 @@ const SigninForm = () => {
   const router = useRouter();
   const { isSignedIn, setIsSignedIn } = useSignInContext();
   const [ name, setName ] = useState<string>('');
-  const [ password, setPassword ] = useState<string>('')
+  const [ password, setPassword ] = useState<string>('');
+  const [ nameError, setNameError ] = useState(false);
+  const [ passwordError, setPasswordError ] = useState(false);
+
   const url = 'http://127.0.0.1:8080/signin';
   const user = {
     name,
@@ -18,12 +21,14 @@ const SigninForm = () => {
   }
   const handleName = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault()
+    setNameError(false)
     setName(event.target.value)
     console.log(name)
   };
 
   const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault()
+    setPasswordError(false)
     setPassword(event.target.value)
     console.log(password)
   }
@@ -43,7 +48,11 @@ const SigninForm = () => {
     } catch (error: Error | AxiosError | any) {
       // figure out the typing resolution for axios errors
       console.log(error)
-      console.log(error.response.data)
+      if (error.response.data === "user not found, please sign in") {
+        setNameError(true)
+      } else if (error.response.data === "incorrect password") {
+        setPasswordError(true)
+      }
     }
     console.log(isSignedIn)
   };
@@ -52,13 +61,13 @@ const SigninForm = () => {
       <form onSubmit={ handleSubmit } className="signin_form" id="signin_form">
         <h2 className="form_header">Welcome, please sign in</h2>
         <div className="form_element">
-          <input onChange={ handleName } className="input_field error_field" required={true} id="username" name="name" type="text" placeholder="Enter Username"/>
-          <div className="name_error_popup"></div>
+          <input onChange={ handleName } className={ nameError ? "input_field error_field" : "input_field" } required={true} id="username" name="name" type="text" placeholder="Enter Username"/>
+          <div className={ nameError ? "name_error_popup" : "" }></div>
         </div>
         
         <div className="form_element ">
-          <input onChange={ handlePassword } className="input_field error_field" required={true} id="password" name="password" type="password" placeholder="Enter password" />
-          <div className="password_error_popup"></div>
+          <input onChange={ handlePassword } className={ passwordError ? "input_field error_field" : "input_field" } required={true} id="password" name="password" type="password" placeholder="Enter password" />
+          <div className={ passwordError ? "password_error_popup" : "" }></div>
         </div>
         
         <div className="form_element">
