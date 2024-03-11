@@ -1,9 +1,10 @@
-import BoopButton from "@/components/WordLookUp"
+import BoopButton from '@/components/WordLookUp'
+import ProfileSection from './components/ProfileSection'
+
 const Profile = () => {
     return (
     <main>
-        <p>yo</p>
-        <BoopButton />
+        <ProfileSection />
     </main>
     )
 }
