@@ -13,7 +13,6 @@ const SigninForm = () => {
   const [ password, setPassword ] = useState<string>('');
   const [ nameError, setNameError ] = useState(false);
   const [ passwordError, setPasswordError ] = useState(false);
-
   const url = 'http://16.171.206.152:8080/signin';
   const user = {
     name,
