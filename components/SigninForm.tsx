@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import useSignInContext from '@/contexts/SignInContext'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 
 const SigninForm = () => {
 
@@ -37,9 +37,13 @@ const SigninForm = () => {
         console.log(data)
         setIsSignedIn(true)
         router.push('/profile')
+      } else {
+        // invalid user 
       }
-    } catch (error) {
+    } catch (error: Error | AxiosError | any) {
+      // figure out the typing resolution for axios errors
       console.log(error)
+      console.log(error.response.data)
     }
     console.log(isSignedIn)
   };
