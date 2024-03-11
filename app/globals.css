@@ -94,6 +94,19 @@
   font-weight: 300;
   font-size: 0.8rem;
 }
+.password_error_popup::after {
+  content: 'Incorrect password';
+ font-size: 0.8rem;
+  color: rgb(216, 63, 63);
+}
+.name_error_popup::after {
+  content: 'User not found';
+ font-size: 0.8rem;
+  color: rgb(216, 63, 63);
+}
+.error_field {
+  border: 1px solid rgb(216, 63, 63);
+}
 .btn {
   background-color: var(--grey);
   border-radius: 2px;

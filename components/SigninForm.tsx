@@ -52,11 +52,15 @@ const SigninForm = () => {
       <form onSubmit={ handleSubmit } className="signin_form" id="signin_form">
         <h2 className="form_header">Welcome, please sign in</h2>
         <div className="form_element">
-          <input onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleName(event)} className="input_field" id="username" name="name" type="text" placeholder="Enter Username"/>
+          <input onChange={ handleName } className="input_field error_field" required={true} id="username" name="name" type="text" placeholder="Enter Username"/>
+          <div className="name_error_popup"></div>
         </div>
-        <div className="form_element">
-          <input onChange={ handlePassword } className="input_field" id="password" name="password" type="password" placeholder="Enter password" />
+        
+        <div className="form_element ">
+          <input onChange={ handlePassword } className="input_field error_field" required={true} id="password" name="password" type="password" placeholder="Enter password" />
+          <div className="password_error_popup"></div>
         </div>
+        
         <div className="form_element">
           <button className="btn signin_btn">Sign in</button>
         </div>
