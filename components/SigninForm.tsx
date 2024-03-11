@@ -1,15 +1,13 @@
 'use client'
-import { NextPage } from "next"
-import { FormEventHandler, useState } from "react"
-import useSignInContext from "@/contexts/SignInContext"
-import axios from "axios"
 
-// signin props
-interface SigninFormProps {
-    onSubmit: FormEventHandler<HTMLFormElement>;
-}
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import useSignInContext from '@/contexts/SignInContext'
+import axios from 'axios'
 
 const SigninForm = () => {
+
+  const router = useRouter();
   const { isSignedIn, setIsSignedIn } = useSignInContext();
   const [ name, setName ] = useState<string>('');
   const [ password, setPassword ] = useState<string>('')
@@ -38,7 +36,7 @@ const SigninForm = () => {
       if (status === 200) {
         console.log(data)
         setIsSignedIn(true)
-        console.log(isSignedIn)
+        router.push('/profile')
       }
     } catch (error) {
       console.log(error)
