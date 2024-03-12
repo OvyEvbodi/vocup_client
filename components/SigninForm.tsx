@@ -14,7 +14,7 @@ const SigninForm = () => {
   const [ nameError, setNameError ] = useState<boolean>(false);
   const [ passwordError, setPasswordError ] = useState<boolean>(false);
   const [ serverError, setServerError ] = useState<boolean>(false);
-  const url = 'http://vocup.wigit.com.ng:8080/signin';
+  const url = 'https://vocup.wigit.com.ng/signin';
   const user = {
     name,
     password
