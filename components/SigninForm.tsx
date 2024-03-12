@@ -11,9 +11,10 @@ const SigninForm = () => {
   const { isSignedIn, setIsSignedIn } = useSignInContext();
   const [ name, setName ] = useState<string>('');
   const [ password, setPassword ] = useState<string>('');
-  const [ nameError, setNameError ] = useState(false);
-  const [ passwordError, setPasswordError ] = useState(false);
-  const url = 'http://16.171.206.152:8080/signin';
+  const [ nameError, setNameError ] = useState<boolean>(false);
+  const [ passwordError, setPasswordError ] = useState<boolean>(false);
+  const [ serverError, setServerError ] = useState<boolean>(false);
+  const url = 'http://vocup.wigit.com.ng:8080/signin';
   const user = {
     name,
     password
@@ -47,10 +48,14 @@ const SigninForm = () => {
     } catch (error: Error | AxiosError | any) {
       // figure out the typing resolution for axios errors
       console.log(error)
-      if (error.response.data === "user not found, please sign in") {
+
+      if (error.response && error.response.data === "user not found, please sign in") {
         setNameError(true)
-      } else if (error.response.data === "incorrect password") {
+      } else if (error.response && error.response.data === "incorrect password") {
         setPasswordError(true)
+      }
+      else {
+        setServerError(true)
       }
     }
     console.log(isSignedIn)
@@ -59,6 +64,7 @@ const SigninForm = () => {
     <div className="signin_form_wrap">
       <form onSubmit={ handleSubmit } className="signin_form" id="signin_form">
         <h2 className="form_header">Welcome, please sign in</h2>
+        <div className={ serverError ? "server_error" : "" }></div>
         <div className="form_element">
           <input onChange={ handleName } className={ nameError ? "input_field error_field" : "input_field" } required={true} id="username" name="name" type="text" placeholder="Enter Username"/>
           <div className={ nameError ? "name_error_popup" : "" }></div>
