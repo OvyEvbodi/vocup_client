@@ -15,6 +15,10 @@ const SigninForm = () => {
   const [ passwordError, setPasswordError ] = useState<boolean>(false);
   const [ serverError, setServerError ] = useState<boolean>(false);
   const url = 'https://vocup.wigit.com.ng/signin';
+  const headers = {
+    "Content-Type": "Application/json",
+    "Origin": "*"
+  };
   const user = {
     name,
     password
@@ -36,7 +40,7 @@ const SigninForm = () => {
   const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     try {
-      const { data, status } = await axios.post(url, user)
+      const { data, status } = await axios.post(url, user, { headers: headers })
       //check response for jwt and set user
       if (status === 200) {
         console.log(data)
