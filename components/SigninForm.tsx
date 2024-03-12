@@ -8,7 +8,7 @@ import axios, { AxiosError } from 'axios'
 const SigninForm = () => {
 
   const router = useRouter();
-  const { isSignedIn, setIsSignedIn } = useSignInContext();
+  const { setIsSignedIn } = useSignInContext();
   const [ name, setName ] = useState<string>('');
   const [ password, setPassword ] = useState<string>('');
   const [ nameError, setNameError ] = useState<boolean>(false);
@@ -62,7 +62,6 @@ const SigninForm = () => {
         setServerError(true)
       }
     }
-    console.log(isSignedIn)
   };
   return (
     <div className="signin_form_wrap">
