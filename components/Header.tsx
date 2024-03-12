@@ -5,7 +5,6 @@ import useSignInContext from "@/contexts/SignInContext";
 const Header = () => {
 
   const { isSignedIn, setIsSignedIn } = useSignInContext();
-  console.log(isSignedIn)
   return (
     <header className="text-dark_text p-4  h-[8vh] flex justify-between">
       <h1 className="font-extrabold text-xl lg:text-3xl">VocUp</h1>

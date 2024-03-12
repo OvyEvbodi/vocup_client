@@ -26,15 +26,15 @@ const SigninForm = () => {
   const handleName = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault()
     setNameError(false)
+    setServerError(false)
     setName(event.target.value)
-    console.log(name)
   };
 
   const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault()
     setPasswordError(false)
+    setServerError(false)
     setPassword(event.target.value)
-    console.log(password)
   }
 
   const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
