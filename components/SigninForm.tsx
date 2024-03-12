@@ -17,7 +17,7 @@ const SigninForm = () => {
   const url = 'https://vocup.wigit.com.ng/signin';
   const headers = {
     "Content-Type": "Application/json",
-    "Origin": "*"
+    "Origin": "https://vocup.vercel.app"
   };
   const user = {
     name,
