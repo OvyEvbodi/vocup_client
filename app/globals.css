@@ -14,6 +14,7 @@
   --dark_text: #393839;
   --faint_text: #3a3b4aa6;
   --white: #fff;
+  --red: rgb(188, 61, 61);
 }
 
 .nav_link {
@@ -97,15 +98,21 @@
 .password_error_popup::after {
   content: 'Incorrect password';
  font-size: 0.8rem;
-  color: rgb(216, 63, 63);
+  color: var(--red);
 }
 .name_error_popup::after {
   content: 'User not found';
  font-size: 0.8rem;
-  color: rgb(216, 63, 63);
+  color: var(--red);
 }
 .error_field {
-  border: 1px solid rgb(216, 63, 63);
+  border: 1px solid var(--red);
+}
+.server_error::before {
+  content: "We're so sorry, but an error has occured on our end. Please try again.";
+  font-weight: 200;
+  font-size: 0.9rem;
+  color: var(--red);
 }
 .btn {
   background-color: var(--grey);
