@@ -72,7 +72,6 @@ const SigninForm = () => {
           <input onChange={ handleEmail } className={ emailError ? "input_field error_field" : "input_field" } required={true} id="email" name="email" type="email" placeholder="Enter email"/>
           <div className={ emailError ? "email_error_popup" : "" }></div>
         </div>
-        
         <div className="form_element ">
           <input onChange={ handlePassword } className={ passwordError ? "input_field error_field" : "input_field" } required={true} id="password" name="password" type="password" placeholder="Enter password" />
           <div className={ passwordError ? "password_error_popup" : "" }></div>
