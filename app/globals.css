@@ -100,7 +100,7 @@
  font-size: 0.8rem;
   color: var(--red);
 }
-.name_error_popup::after {
+.email_error_popup::after {
   content: 'User not found';
  font-size: 0.8rem;
   color: var(--red);

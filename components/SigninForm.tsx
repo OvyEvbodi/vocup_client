@@ -9,9 +9,9 @@ const SigninForm = () => {
 
   const router = useRouter();
   const { setIsSignedIn } = useSignInContext();
-  const [ name, setName ] = useState<string>('');
+  const [ email, setEmail ] = useState<string>('');
   const [ password, setPassword ] = useState<string>('');
-  const [ nameError, setNameError ] = useState<boolean>(false);
+  const [ emailError, setEmailError ] = useState<boolean>(false);
   const [ passwordError, setPasswordError ] = useState<boolean>(false);
   const [ serverError, setServerError ] = useState<boolean>(false);
   const url = 'https://vocup.wigit.com.ng/signin';
@@ -20,14 +20,14 @@ const SigninForm = () => {
     "Origin": "https://vocup.vercel.app"
   };
   const user = {
-    name,
+    email,
     password
   }
   const handleName = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault()
-    setNameError(false)
+    setEmailError(false)
     setServerError(false)
-    setName(event.target.value)
+    setEmail(event.target.value)
   };
 
   const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,7 +54,7 @@ const SigninForm = () => {
       console.log(error)
 
       if (error.response && error.response.data.msg === "user not found, please sign in") {
-        setNameError(true)
+        setEmailError(true)
       } else if (error.response && error.response.data.msg === "incorrect password") {
         setPasswordError(true)
       }
@@ -69,8 +69,8 @@ const SigninForm = () => {
         <h2 className="form_header">Welcome, please sign in</h2>
         <div className={ serverError ? "server_error" : "" }></div>
         <div className="form_element">
-          <input onChange={ handleName } className={ nameError ? "input_field error_field" : "input_field" } required={true} id="username" name="name" type="text" placeholder="Enter Username"/>
-          <div className={ nameError ? "name_error_popup" : "" }></div>
+          <input onChange={ handleName } className={ emailError ? "input_field error_field" : "input_field" } required={true} id="username" name="name" type="text" placeholder="Enter Username"/>
+          <div className={ emailError ? "email_error_popup" : "" }></div>
         </div>
         
         <div className="form_element ">
