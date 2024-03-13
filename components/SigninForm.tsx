@@ -23,7 +23,7 @@ const SigninForm = () => {
     email,
     password
   }
-  const handleName = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault()
     setEmailError(false)
     setServerError(false)
@@ -69,11 +69,7 @@ const SigninForm = () => {
         <h2 className="form_header">Welcome, please sign in</h2>
         <div className={ serverError ? "server_error" : "" }></div>
         <div className="form_element">
-<<<<<<< Updated upstream
-          <input onChange={ handleName } className={ emailError ? "input_field error_field" : "input_field" } required={true} id="username" name="name" type="text" placeholder="Enter Username"/>
-=======
-          <input onChange={ handleName } className={ emailError ? "input_field error_field" : "input_field" } required={true} id="email" name="email" type="email" placeholder="Enter email"/>
->>>>>>> Stashed changes
+          <input onChange={ handleEmail } className={ emailError ? "input_field error_field" : "input_field" } required={true} id="email" name="email" type="email" placeholder="Enter email"/>
           <div className={ emailError ? "email_error_popup" : "" }></div>
         </div>
         
