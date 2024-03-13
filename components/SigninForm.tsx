@@ -53,9 +53,9 @@ const SigninForm = () => {
       // figure out the typing resolution for axios errors
       console.log(error)
 
-      if (error.response && error.response.data === "user not found, please sign in") {
+      if (error.response && error.response.data.msg === "user not found, please sign in") {
         setNameError(true)
-      } else if (error.response && error.response.data === "incorrect password") {
+      } else if (error.response && error.response.data.msg === "incorrect password") {
         setPasswordError(true)
       }
       else {
