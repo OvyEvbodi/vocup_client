@@ -23,9 +23,9 @@ const Signout = () => {
     }
   }
 
-  if (!isSignedIn) {
-    router.push('/')
-  }
+  // if (!isSignedIn) {
+  //   router.push('/')
+  // }
 
   return (
     <div className='text-center mt-10'>
