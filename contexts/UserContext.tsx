@@ -3,7 +3,7 @@
 import { Reducer, useReducer, useContext, createContext } from 'react'
 
 // user interface
-interface UserState {
+export interface UserState {
     email: string;
     username: string;
     createdAt: Date | null;

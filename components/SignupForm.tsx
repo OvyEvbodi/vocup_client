@@ -56,7 +56,7 @@ const SignupForm = () => {
 
       if ( status === 200 ) {
         //route to profile
-        router.push('/profile')
+        router.push('/signin')
       }
     } catch (error) {
       console.log(error)

@@ -4,7 +4,7 @@ import useSignInContext from "@/contexts/SignInContext";
 
 const Header = () => {
 
-  const { isSignedIn, setIsSignedIn } = useSignInContext();
+  const { isSignedIn } = useSignInContext();
   return (
     <header className="text-dark_text p-4  h-[8vh] flex justify-between">
       <h1 className="font-extrabold text-xl lg:text-3xl">VocUp</h1>
@@ -13,7 +13,7 @@ const Header = () => {
         { 
           isSignedIn ?
           <Link href="/profile" className="nav_link">Profile</Link> :
-          <Link href="/signin" className="nav_link">you dey whine?</Link>
+          <Link href="/signup" className="nav_link">Join us</Link>
         }
         <Link href="/signin" className="nav_link">Sign in</Link>
       </nav>
