@@ -15,7 +15,11 @@ const Header = () => {
           <Link href="/profile" className="nav_link">Profile</Link> :
           <Link href="/signup" className="nav_link">Join us</Link>
         }
-        <Link href="/signin" className="nav_link">Sign in</Link>
+        {
+          isSignedIn ?
+          <Link href="/signout" className="nav_link">Sign out</Link> :
+          <Link href="/signin" className="nav_link">Sign in</Link>
+        }
       </nav>
     </header>
   )

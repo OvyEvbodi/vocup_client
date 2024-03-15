@@ -4,11 +4,12 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import useSignInContext from '@/contexts/SignInContext'
 import axios, { AxiosError } from 'axios'
+import Link from 'next/link'
 
 const SigninForm = () => {
 
   const router = useRouter();
-  const { setIsSignedIn } = useSignInContext();
+  const { isSignedIn, setIsSignedIn } = useSignInContext();
   const [ email, setEmail ] = useState<string>('');
   const [ password, setPassword ] = useState<string>('');
   const [ emailError, setEmailError ] = useState<boolean>(false);
@@ -63,6 +64,11 @@ const SigninForm = () => {
       }
     }
   };
+
+  console.log(isSignedIn)
+  if (isSignedIn) {
+    router.push('/profile')
+  }
   return (
     <div className="signin_form_wrap">
       <form onSubmit={ handleSubmit } className="signin_form" id="signin_form">
@@ -81,8 +87,8 @@ const SigninForm = () => {
           <button className="btn signin_btn">Sign in</button>
         </div>
         <div className="form_footer">
-          <p className="signup_link">New here, <a>signup</a></p>
-          <p className="signup_link"><a>forgot password?</a></p>
+          <p className="signup_link">New here, <Link href='/signup'>signup</Link></p>
+          <p className="signup_link"><Link href=''>forgot password?</Link></p>
         </div>
       </form>
     </div>

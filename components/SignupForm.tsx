@@ -6,6 +6,7 @@ import Button, { ButtonProps } from '@/components/Button'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import axios from 'axios'
+import Link from 'next/link'
 
 const SignupForm = () => {
   const { User: { email, username }, userDispatch } = useUserContext();
@@ -84,8 +85,8 @@ const SignupForm = () => {
           <Button { ...buttonValues } />
         </div>
         <div className="form_footer">
-          <p className="signup_link">Not a newbie, <a>sign in</a></p>
-          <p className="signup_link"><a> forgot password?</a></p>
+          <p className="signup_link">Not a newbie, <Link href='/signin'>sign in</Link></p>
+          <p className="signup_link"><Link href=''> forgot password?</Link></p>
         </div>
       </form>
     </div>

@@ -16,6 +16,12 @@ interface Action {
     datePayload: Date;
 }
 
+const userData: UserState = {
+  email: '',
+  username: '',
+  createdAt: null
+};
+
 const userReducer = (state: UserState, action: Action ): UserState => {
   switch (action.type) {
     case 'SET_EMAIL':
@@ -24,18 +30,13 @@ const userReducer = (state: UserState, action: Action ): UserState => {
       return { ...state, username: action.payload }
     case 'SET_CREATED_AT':
       return { ...state, createdAt: action.datePayload }
+    case 'RESET_USER':
+      return userData
     // set words and all other stats data
     default:
       throw new Error('Nothing set, pass an action') 
   }
 };
-
-const userData: UserState = {
-  email: '',
-  username: '',
-  createdAt: null
-};
-
 
 // create the user context for users
 const userContext = createContext<any>({ userData, dispatch: null });
