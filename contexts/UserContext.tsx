@@ -1,6 +1,6 @@
 'use client'
 
-import { Reducer, useReducer, useContext } from 'react'
+import { Reducer, useReducer, useContext, createContext } from 'react'
 
 // user interface
 interface UserState {
@@ -37,3 +37,22 @@ const UserData: UserState = {
 };
 
 const [ User, userDispatch ] = useReducer<Reducer<UserState, Action>>(userReducer, UserData);
+
+// create the user context for users
+const userContext = createContext<UserState>({
+  email: '',
+ username: '',
+ createdAt: null
+});
+
+const userContextProvider = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <userContext.Provider value={ { ...UserData } }>
+      { children }
+    </userContext.Provider>
+  )
+};
+
+const useUserContext = () => useContext(userContext);
+
+export default useUserContext
