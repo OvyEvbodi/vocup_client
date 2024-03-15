@@ -30,24 +30,21 @@ const userReducer = (state: UserState, action: Action ): UserState => {
   }
 };
 
-const UserData: UserState = {
+const userData: UserState = {
   email: '',
   username: '',
   createdAt: null
 };
 
-const [ User, userDispatch ] = useReducer<Reducer<UserState, Action>>(userReducer, UserData);
 
 // create the user context for users
-const userContext = createContext<UserState>({
-  email: '',
- username: '',
- createdAt: null
-});
+const userContext = createContext<any>({ userData, dispatch: null });
 
-const userContextProvider = ({ children }: { children: React.ReactNode }) => {
+export const UserContextProvider:any = ({ children }: { children: React.ReactNode }) => {
+  const [ User, userDispatch ] = useReducer<Reducer<UserState, Action>>(userReducer, userData);
+
   return (
-    <userContext.Provider value={ { ...UserData } }>
+    <userContext.Provider value={ { User, userDispatch } }>
       { children }
     </userContext.Provider>
   )
