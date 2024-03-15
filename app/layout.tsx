@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import { SignInContextProvider } from "@/contexts/SignInContext";
+import { UserContextProvider } from "@/contexts/UserContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <UserContextProvider>
       <SignInContextProvider>
         <body className={inter.className}>
           <main>
@@ -26,6 +28,7 @@ export default function RootLayout({
           </main>
         </body>
       </SignInContextProvider>
+      </UserContextProvider>
     </html>
   );
 }
