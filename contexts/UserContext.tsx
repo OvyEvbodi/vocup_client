@@ -3,7 +3,7 @@
 import { Reducer, useReducer, useContext } from 'react'
 
 // user interface
-interface User {
+interface UserState {
     email: string;
     username: string;
     createdAt: Date | null;
@@ -16,7 +16,7 @@ interface Action {
     datePayload: Date;
 }
 
-const userReducer = (state: User, action: Action ): User => {
+const userReducer = (state: UserState, action: Action ): UserState => {
   switch (action.type) {
     case 'SET_EMAIL':
       return { ...state, email: action.payload }
@@ -30,10 +30,10 @@ const userReducer = (state: User, action: Action ): User => {
   }
 };
 
-const UserData: User = {
+const UserData: UserState = {
   email: '',
   username: '',
   createdAt: null
 };
 
-const [ User, userDispatch ] = useReducer<Reducer<User, Action>>(userReducer, UserData);
+const [ User, userDispatch ] = useReducer<Reducer<UserState, Action>>(userReducer, UserData);
