@@ -12,9 +12,10 @@ export interface InputProps {
     required?: boolean;
     autocomplete?: 'on' | 'off';
     value?: string;
+    className?: string;
 }
 
-const Input: NextPage<InputProps> = ({ onChange, onLoad, name, type, placeholder, id, required, autocomplete, value } ) => (
+const Input: NextPage<InputProps> = ({ onChange, onLoad, name, type, placeholder, id, required, autocomplete, value , className} ) => (
     <input
         onChange={ onChange }
         onLoad={ onLoad }
@@ -22,7 +23,7 @@ const Input: NextPage<InputProps> = ({ onChange, onLoad, name, type, placeholder
         type={ type }
         placeholder={ placeholder }
         id={ id }
-        className='py-2 px-4 outline-none text-sm text-bg-dark_bg rounded-sm'
+        className={ className }
         required={ required }
         autoComplete={ autocomplete }
         value={ value }
