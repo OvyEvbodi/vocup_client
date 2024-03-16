@@ -39,6 +39,8 @@ const SigninForm = () => {
     setPassword(event.target.value)
   }
 
+  console.log(user);
+  
   const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     try {
@@ -48,9 +50,9 @@ const SigninForm = () => {
         console.log(data) // take out after mvp
         setIsSignedIn(true)
         userDispatch( { type: 'SET_USERNAME', payload: data.username })
-        // userDispatch( { type: '', payload: '' })
+        // userDispatch( { type: 'SET_EMAIL', payload: data.email })
         // set other things
-        //persist jwt
+        // persist jwt
         router.push('/profile')
       } else {
         // invalid user 
@@ -81,6 +83,7 @@ const SigninForm = () => {
         <div className="form_element">
           <input onChange={ handleEmail } className={ emailError ? "input_field error_field" : "input_field" } required={true} id="email" name="email" type="email" placeholder="Enter email"/>
           <div className={ emailError ? "email_error_popup" : "" }></div>
+          <div>{email}</div>
         </div>
         <div className="form_element ">
           <input onChange={ handlePassword } className={ passwordError ? "input_field error_field" : "input_field" } required={true} id="password" name="password" type="password" placeholder="Enter password" />
