@@ -5,12 +5,13 @@ import { useRouter } from 'next/navigation'
 import useSignInContext from '@/contexts/SignInContext'
 import axios, { AxiosError } from 'axios'
 import Link from 'next/link'
+import useUserContext from '@/contexts/UserContext'
 
 const SigninForm = () => {
 
   const router = useRouter();
   const { isSignedIn, setIsSignedIn } = useSignInContext();
-  const [ email, setEmail ] = useState<string>('');
+  const { User: { email }, userDispatch } = useUserContext();
   const [ password, setPassword ] = useState<string>('');
   const [ emailError, setEmailError ] = useState<boolean>(false);
   const [ passwordError, setPasswordError ] = useState<boolean>(false);
@@ -28,7 +29,7 @@ const SigninForm = () => {
     event.preventDefault()
     setEmailError(false)
     setServerError(false)
-    setEmail(event.target.value)
+    userDispatch( {type: 'SET_EMAIL', payload: event.target.value })
   };
 
   const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,8 +45,12 @@ const SigninForm = () => {
       const { data, status } = await axios.post(url, user, { headers: headers })
       //check response for jwt and set user
       if (status === 200) {
-        console.log(data)
+        console.log(data) // take out after mvp
         setIsSignedIn(true)
+        userDispatch( { type: 'SET_USERNAME', payload: data.username })
+        // userDispatch( { type: '', payload: '' })
+        // set other things
+        //persist jwt
         router.push('/profile')
       } else {
         // invalid user 
@@ -65,7 +70,6 @@ const SigninForm = () => {
     }
   };
 
-  console.log(isSignedIn)
   if (isSignedIn) {
     router.push('/profile')
   }
