@@ -7,8 +7,9 @@ const ProfileSection = ( user: UserState ) => {
 
   return (
     <section>
-      <h1>Welcome back!{ JSON.stringify(user)}</h1>
-      <p>I know you&apos;d like to see your personal information, but I&apos;m still working on the user context, so check back in a few hours. Ciao</p>
+      <h1>Welcome back! { user.username } </h1>
+      <p>Never forget your awesome custom email ---- { user.email }</p>
+      <p>Now, let&apos;s work on a cool stats page for you to track your learning progress!</p>
     </section>
   )
 }
