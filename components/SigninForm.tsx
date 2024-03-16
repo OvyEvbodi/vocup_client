@@ -38,8 +38,6 @@ const SigninForm = () => {
     setServerError(false)
     setPassword(event.target.value)
   }
-
-  console.log(user);
   
   const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
