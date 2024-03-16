@@ -3,6 +3,7 @@ import Button, { ButtonProps } from '@/components/Button'
 import useSignInContext from '@/contexts/SignInContext'
 import { useRouter } from 'next/navigation'
 import useUserContext from '@/contexts/UserContext'
+import { useEffect } from 'react'
 
 const Signout = () => {
 
@@ -23,9 +24,11 @@ const Signout = () => {
     }
   }
 
-  // if (!isSignedIn) {
-  //   router.push('/')
-  // }
+  useEffect(() => {
+    if (!isSignedIn) {
+      router.push('/')
+     }   
+  }, [])
 
   return (
     <div className='text-center mt-10'>
