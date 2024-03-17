@@ -27,8 +27,9 @@ const Signout = () => {
   useEffect(() => {
     if (!isSignedIn) {
       router.push('/')
+      console.log('hook ran!')
      }   
-  }, [])
+  }, [isSignedIn, router])
 
   return (
     <div className='text-center mt-10'>
