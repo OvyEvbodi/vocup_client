@@ -1,0 +1,30 @@
+[
+    {
+        "day": "Sun",
+        "wordCount": 2
+    },
+    {
+        "day": "Mon",
+        "wordCount": 4
+    },
+    {
+        "day": "Tue",
+        "wordCount": 3
+    },
+    {
+        "day": "Wed",
+        "wordCount": 12
+    },
+    {
+        "day": "Thur",
+        "wordCount": 4
+    },
+    {
+        "day": "Fri",
+        "wordCount": 8
+    },
+    {
+        "day": "Sat",
+        "wordCount": 3
+    }
+]

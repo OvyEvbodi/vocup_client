@@ -1,0 +1,51 @@
+[
+    {
+      "month": "Jan",
+        "wordCount": 35
+    },
+    {
+      "month": "Feb",
+      "wordCount": 23
+    },
+    {
+      "month": "Mar",
+      "wordCount": 19
+    },
+    {
+      "month": "Apr",
+      "wordCount": 44
+    },
+    {
+      "month": "May",
+      "wordCount": 31
+    },
+    {
+      "month": "Jun",
+      "wordCount": 12
+    },
+    {
+      "month": "Jul",
+      "wordCount": 39
+    },
+    {
+      "month": "Aug",
+      "wordCount": 16
+    },
+    {
+      "month": "Sep",
+      "wordCount": 26
+    },
+    {
+      "month": "Oct",
+      "wordCount": 8
+    },
+    {
+      "month": "Nov",
+      "wordCount": 22
+    },
+    {
+      "month": "Dec",
+      "wordCount": 8
+    }
+
+  ]
