@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import useSignInContext from '@/contexts/SignInContext'
 import axios, { AxiosError } from 'axios'
@@ -16,6 +16,8 @@ const SigninForm = () => {
   const [ emailError, setEmailError ] = useState<boolean>(false);
   const [ passwordError, setPasswordError ] = useState<boolean>(false);
   const [ serverError, setServerError ] = useState<boolean>(false);
+  const [ errorMsg, setErrorMsg ] = useState<string>('');
+  const [ isLoading, setIsLoading ] = useState<boolean>(false);
   const url = 'https://vocup.wigit.com.ng/signin';
   const headers = {
     "Content-Type": "Application/json",
@@ -42,21 +44,30 @@ const SigninForm = () => {
   const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     try {
+      setIsLoading(true)
       const { data, status } = await axios.post(url, user, { headers: headers })
       //check response for jwt and set user
       if (status === 200) {
         console.log(data) // take out after mvp
         setIsSignedIn(true)
+        setErrorMsg('')
         userDispatch( { type: 'SET_USERNAME', payload: data.username })
-        // userDispatch( { type: 'SET_EMAIL', payload: data.email })
+        userDispatch( { type: 'SET_EMAIL', payload: data.email })
         // set other things
         // persist jwt
+        window.sessionStorage.setItem('jwt', data.jwt)
+        window.sessionStorage.setItem('isSignedIn', JSON.stringify(true))
+        window.sessionStorage.setItem('username', data.username)
+        window.sessionStorage.setItem('email', data.email)
+        setIsLoading(false)
         router.push('/profile')
       } else {
         // invalid user 
       }
     } catch (error: Error | AxiosError | any) {
       // figure out the typing resolution for axios errors
+      setIsLoading(false)
+      setErrorMsg(error.message)
       console.log(error)
 
       if (error.response && error.response.data.msg === "user not found, please sign in") {
@@ -70,32 +81,45 @@ const SigninForm = () => {
     }
   };
 
-  if (isSignedIn) {
-    router.push('/profile')
-  }
+  console.log(isSignedIn)
+  useEffect(() => {
+    if (isSignedIn) {
+      router.push('/profile')
+      console.log('hook ran!')
+     }   
+  }, [isSignedIn, router])
+
   return (
     <div className="signin_form_wrap">
-      <form onSubmit={ handleSubmit } className="signin_form" id="signin_form">
-        <h2 className="form_header">Welcome, please sign in</h2>
-        <div className={ serverError ? "server_error" : "" }></div>
-        <div className="form_element">
-          <input onChange={ handleEmail } className={ emailError ? "input_field error_field" : "input_field" } required={true} id="email" name="email" type="email" placeholder="Enter email"/>
-          <div className={ emailError ? "email_error_popup" : "" }></div>
-          <div>{email}</div>
+      { !isLoading ?
+        <form onSubmit={ handleSubmit } className="signin_form" id="signin_form">
+          <h2 className="form_header">Welcome, please sign in</h2>
+          <div className={ serverError ? "server_error" : "" }></div>
+          <div className="form_element">
+            <input onChange={ handleEmail } className={ emailError ? "input_field error_field" : "input_field" } required={true} id="email" name="email" type="email" placeholder="Enter email"/>
+            <div className={ emailError ? "email_error_popup" : "" }></div>
+          </div>
+          <div className="form_element ">
+            <input onChange={ handlePassword } className={ passwordError ? "input_field error_field" : "input_field" } required={true} id="password" name="password" type="password" placeholder="Enter password" />
+            <div className={ passwordError ? "password_error_popup" : "" }></div>
+          </div>
+
+          <div className="form_element">
+            <button className="btn signin_btn">Sign in</button>
+          </div>
+          <div className="form_footer">
+            <p className="signup_link">New here, <Link href='/signup'>signup</Link></p>
+            <p className="signup_link"><Link href=''>forgot password?</Link></p>
+          </div>
+          <div>{JSON.stringify(isSignedIn)}</div>
+        </form> :
+        <div>{
+          errorMsg ?
+          <div> {errorMsg}</div> :
+          <div>Signing you in...</div> 
+        }
         </div>
-        <div className="form_element ">
-          <input onChange={ handlePassword } className={ passwordError ? "input_field error_field" : "input_field" } required={true} id="password" name="password" type="password" placeholder="Enter password" />
-          <div className={ passwordError ? "password_error_popup" : "" }></div>
-        </div>
-        
-        <div className="form_element">
-          <button className="btn signin_btn">Sign in</button>
-        </div>
-        <div className="form_footer">
-          <p className="signup_link">New here, <Link href='/signup'>signup</Link></p>
-          <p className="signup_link"><Link href=''>forgot password?</Link></p>
-        </div>
-      </form>
+      }
     </div>
   )
 }

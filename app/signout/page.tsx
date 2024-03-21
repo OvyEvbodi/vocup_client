@@ -18,16 +18,16 @@ const Signout = () => {
     text: 'Sign out :(',
     type: 'submit',
     onClick: (event: React.MouseEvent<HTMLButtonElement>) => {
+      window.sessionStorage.clear()
       setIsSignedIn(false)
       userDispatch({ type: 'RESET_USER' })
       router.push('/')
     }
-  }
+  }  
 
   useEffect(() => {
     if (!isSignedIn) {
       router.push('/')
-      console.log('hook ran!')
      }   
   }, [isSignedIn, router])
 
