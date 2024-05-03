@@ -26,11 +26,11 @@ const StatsWrap = ({ children }: { children : React.ReactNode }) => {
   )
 };
 
-const GeneralStats = () => {
+const GeneralStats = (statsData: any) => {
   return (
     <div className='p-2 flex flex-wrap justify-center items-center gap-4'>
       <StatsWrap>
-        {686}
+        {statsData && statsData.word_count}
         <h2>Words learned</h2>
         <div className="mt-2">
           <Image
@@ -42,7 +42,7 @@ const GeneralStats = () => {
         </div>
       </StatsWrap>
       <StatsWrap>
-        {365}
+        {363}
         <h2>Days learning</h2>
         <div className="overflow- mt-2">
           <Image
@@ -98,7 +98,7 @@ const Stats = (user: UserState) => {
     "Content-Type": "Application/json",
     "Origin": "https://vocup.vercel.app"
   };
-  const [ statsData, setStatsData ] = useState({words:[{name: ''}]});
+  const [ statsData, setStatsData ] = useState({word_count: 0, words:[{name: '', id: ''}]});
   // get details from session storage
   const url = 'https://vocup.wigit.com.ng/getwords';
   // const headers = {};
@@ -118,7 +118,7 @@ const Stats = (user: UserState) => {
       }
     }
     getStats()
-  }, [])
+  }, [headers, user])
 
 
   // show words learned by month, for 12 months
@@ -131,11 +131,11 @@ const Stats = (user: UserState) => {
       <div className='p-4'>
         <div>Words to be revisted:</div>
         <div>{statsData && statsData.words.map((word) => (
-          <button className='block hover:text-purple'>{word.name}</button>
+          <button className='block hover:text-purple' key={word.id}>{word.name}</button>
         ))}</div>
       </div>
       <h1>Stats Dashboard</h1>
-      <GeneralStats />
+      <GeneralStats { ...statsData }/>
       <div className="flex flex-wrap justify-center items-center mt-4 gap-8 p-2 md:p-12 ">
         <ChartWrap>
           <h2>Monthly stats</h2>

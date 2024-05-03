@@ -11,12 +11,10 @@ const ProfileSection = ( user: UserState ) => {
     <>
       <section>
         <h1>Welcome back! { user.username } </h1>
-        <p>Never forget your awesome custom email ---- { user.email }</p>
-        <p>Now, let&apos;s work on a cool stats page for you to track your learning progress!</p>
+        <p>We&apos;re working on a cool stats page for you to track your learning progress!</p>
       </section>
       <section>
         <Stats { ...user}/>
-        <div>{user && JSON.stringify(user)}</div>
       </section>
     </>
   )
