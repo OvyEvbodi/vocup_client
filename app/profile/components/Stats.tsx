@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react'
+import { UserState } from '@/contexts/UserContext'
+import axios from 'axios'
 import monthsStatsData from '@/data.json'
 import weekStatsData from '@/week.json'
 import Image from 'next/image'
@@ -97,9 +100,37 @@ const WeekChart = () => {
   )
 };
 
-const Stats = () => {
+const Stats = (user: UserState) => {
+  const headers = {
+    "Content-Type": "Application/json",
+    "Origin": "https://vocup.vercel.app"
+  };
+  const [ statsData, setStatsData ] = useState({});
+  // get details from session storage
+  const url = 'https://vocup.wigit.com.ng/getwords';
+  // const headers = {};
+  useEffect(() => {
+    //get saved words
+    //const { data, status } = await axios.post(url, user, { headers: headers })
+    const getStats = async () => {
+      try {
+        const { data, status } = await axios.post(url, user, { headers: headers } )
+        console.log(user)
+        if (status === 200) {
+          // success
+          setStatsData(data)
+        }
+      } catch (error) {
+        console.error(error)
+        setStatsData({err: "no words found"})
 
-  
+      }
+    }
+
+    getStats()
+
+  }, [])
+
 
   // show words learned by month, for 12 months
   // word count
@@ -108,7 +139,8 @@ const Stats = () => {
 
   return (
     <div className='text-light_text bg-slate-900 min-h-[100vh] min-w-[100vw]'>
-      <StatsNav />
+      <div>{statsData && JSON.stringify(statsData)}</div>
+      {/* <StatsNav /> */}
       <h1>Stats Dashboard</h1>
       <GeneralStats />
       <div className="flex flex-wrap justify-center items-center mt-4 gap-8 p-2 md:p-12 ">

@@ -6,6 +6,7 @@ import Stats from '@/app/profile/components/Stats'
 
 const ProfileSection = ( user: UserState ) => {
 
+  
   return (
     <>
       <section>
@@ -14,7 +15,8 @@ const ProfileSection = ( user: UserState ) => {
         <p>Now, let&apos;s work on a cool stats page for you to track your learning progress!</p>
       </section>
       <section>
-        <Stats />
+        <Stats { ...user}/>
+        <div>{user && JSON.stringify(user)}</div>
       </section>
     </>
   )
