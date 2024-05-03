@@ -9,13 +9,6 @@ import learn from '@/public/assets/learn.svg'
 import statspic from '@/public/assets/stats.svg'
 import { BarChart, Bar, PieChart, Pie, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts'
 
-const StatsNav = () => {
-  return (
-    <nav className='p-6 bg-slate-600 flex gap-6'>
-      <p>Navbar</p>
-    </nav>
-  )
-};
 
 const ChartWrap = ({ children }: { children : React.ReactNode }) => {
   return (
@@ -105,7 +98,7 @@ const Stats = (user: UserState) => {
     "Content-Type": "Application/json",
     "Origin": "https://vocup.vercel.app"
   };
-  const [ statsData, setStatsData ] = useState({});
+  const [ statsData, setStatsData ] = useState({words:[{name: ''}]});
   // get details from session storage
   const url = 'https://vocup.wigit.com.ng/getwords';
   // const headers = {};
@@ -122,13 +115,9 @@ const Stats = (user: UserState) => {
         }
       } catch (error) {
         console.error(error)
-        setStatsData({err: "no words found"})
-
       }
     }
-
     getStats()
-
   }, [])
 
 
@@ -138,9 +127,13 @@ const Stats = (user: UserState) => {
   // how quickly revisted words are learned??
 
   return (
-    <div className='text-light_text bg-slate-900 min-h-[100vh] min-w-[100vw]'>
-      <div>{statsData && JSON.stringify(statsData)}</div>
-      {/* <StatsNav /> */}
+    <div className='text-light_text p-2 bg-slate-900 min-h-[100vh] min-w-[100vw]'>
+      <div className='p-4'>
+        <div>Words to be revisted:</div>
+        <div>{statsData && statsData.words.map((word) => (
+          <button className='block hover:text-purple'>{word.name}</button>
+        ))}</div>
+      </div>
       <h1>Stats Dashboard</h1>
       <GeneralStats />
       <div className="flex flex-wrap justify-center items-center mt-4 gap-8 p-2 md:p-12 ">
