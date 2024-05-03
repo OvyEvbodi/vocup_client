@@ -6,6 +6,8 @@ import useSignInContext from '@/contexts/SignInContext'
 import axios, { AxiosError } from 'axios'
 import Link from 'next/link'
 import useUserContext from '@/contexts/UserContext'
+import Button, { ButtonProps } from '@/components/Button'
+
 
 const SigninForm = () => {
 
@@ -27,6 +29,10 @@ const SigninForm = () => {
     email,
     password
   }
+  const buttonValues:ButtonProps = {
+    text: 'Sign in',
+    type: 'submit'
+  };
   const handleEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault()
     setEmailError(false)
@@ -105,7 +111,7 @@ const SigninForm = () => {
           </div>
 
           <div className="form_element">
-            <button className="btn signin_btn">Sign in</button>
+            <Button { ...buttonValues } />
           </div>
           <div className="form_footer">
             <p className="signup_link">New here, <Link href='/signup'>signup</Link></p>
