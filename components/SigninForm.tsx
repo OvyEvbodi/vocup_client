@@ -117,7 +117,6 @@ const SigninForm = () => {
             <p className="signup_link">New here, <Link href='/signup'>signup</Link></p>
             <p className="signup_link"><Link href=''>forgot password?</Link></p>
           </div>
-          <div>{JSON.stringify(isSignedIn)}</div>
         </form> :
         <div>{
           errorMsg ?
