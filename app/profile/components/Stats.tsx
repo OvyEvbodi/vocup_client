@@ -26,11 +26,11 @@ const StatsWrap = ({ children }: { children : React.ReactNode }) => {
   )
 };
 
-const GeneralStats = (statsData: any) => {
+const GeneralStats = (words: any) => {
   return (
     <div className='p-2 flex flex-wrap justify-center items-center gap-4'>
       <StatsWrap>
-        {statsData && statsData.word_count}
+        {JSON.stringify(words.words)}
         <h2>Words learned</h2>
         <div className="mt-2">
           <Image
@@ -42,7 +42,7 @@ const GeneralStats = (statsData: any) => {
         </div>
       </StatsWrap>
       <StatsWrap>
-        {363}
+      {JSON.stringify(words.days)}
         <h2>Days learning</h2>
         <div className="overflow- mt-2">
           <Image
@@ -98,29 +98,31 @@ const Stats = (user: UserState) => {
     "Content-Type": "Application/json",
     "Origin": "https://vocup.vercel.app"
   };
-  const [ statsData, setStatsData ] = useState({word_count: 0, words:[{name: '', id: ''}]});
+  const [ statsData, setStatsData ] = useState({word_count: 0, words:[{name: '', id: '', date: ''}]});
+  const [ daysLearning, setDaysLearning ] = useState<any>(0);
+  const [ firstWordDate, setFirstWordDate ] = useState<Date | undefined>();
+  let days = 0;
   // get details from session storage
   const url = 'https://vocup.wigit.com.ng/getwords';
-  // const headers = {};
   useEffect(() => {
     //get saved words
-    //const { data, status } = await axios.post(url, user, { headers: headers })
     const getStats = async () => {
       try {
-        const { data, status } = await axios.post(url, user, { headers: headers } )
+        const { data, status } = await axios.post(url, user )
         console.log(user)
         if (status === 200) {
           // success
           setStatsData(data)
+          setDaysLearning(Math.floor(((+new Date()) - (+new Date(data.words[0].date))) / (60 * 60 * 24 * 1000)))
         }
       } catch (error) {
         console.error(error)
       }
     }
-    getStats()
-  }, [headers, user])
+   getStats()
+  }, [user])
 
-
+  // setDaysLearning(days)
   // show words learned by month, for 12 months
   // word count
   // show word learned today
@@ -129,13 +131,14 @@ const Stats = (user: UserState) => {
   return (
     <div className='text-light_text p-2 bg-slate-900 min-h-[100vh] min-w-[100vw]'>
       <div className='p-4'>
-        <div>Words to be revisted:</div>
+        <div> Words to be revisted:</div>
+        <div></div>
         <div>{statsData && statsData.words.map((word) => (
           <button className='block hover:text-purple' key={word.id}>{word.name}</button>
         ))}</div>
       </div>
       <h1>Stats Dashboard</h1>
-      <GeneralStats { ...statsData }/>
+      <GeneralStats words={statsData.word_count} days={daysLearning}/>
       <div className="flex flex-wrap justify-center items-center mt-4 gap-8 p-2 md:p-12 ">
         <ChartWrap>
           <h2>Monthly stats</h2>
@@ -153,4 +156,3 @@ const Stats = (user: UserState) => {
 
 export default Stats
 
-// className="bg-purple opacity-40 min-h-screen"
