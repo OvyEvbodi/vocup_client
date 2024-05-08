@@ -38,7 +38,8 @@ const WordLookUp = () => {
     name: 'searchString',
     type: 'text',
     id: 'wordSearchString',
-    onChange: handleInput
+    onChange: handleInput,
+    className: 'p-2 min-w-[40%] text-center border border-grey'
   }
   const buttonFields: ButtonProps = {
     type: 'submit',
@@ -47,10 +48,11 @@ const WordLookUp = () => {
   }
 
   return (
-    <div className='bg-gray-300 text-dark_text p-6 min-h-[100vh]'>
-      <form className='bg-gray-200 p-6'>
+    <div className='bg-blue text-dark_text p-6 min-h-[15vh]'>
+      <form className='bg-purple p-6 text-center'>
         <Input { ...inputFields} />
-        <Button { ...buttonFields } />
+        <button onClick={HandleSearch} type='submit' disabled={false}
+          className='py-2 px-4 text-md border border-grey bg-grey hover:bg-blue text-light_text hover:text-dark_text transition-all'>Look Up!</button>        
         <p>{wordSearchString}</p>
       </form>
       <SearchResult data={searchResult} />
