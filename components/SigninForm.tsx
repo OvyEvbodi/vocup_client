@@ -21,6 +21,11 @@ const SigninForm = () => {
   const [ errorMsg, setErrorMsg ] = useState<string>('');
   const [ isLoading, setIsLoading ] = useState<boolean>(false);
   const url = 'https://vocup.wigit.com.ng/signin';
+
+  // -------------------------------------------------------------------------------------------------------------
+  // for local dev, uncomment the following line, and comment the one above
+  // const url = 'http://127.0.0.1:8080/signin';
+
   const headers = {
     "Content-Type": "Application/json",
     "Origin": "https://vocup.vercel.app"

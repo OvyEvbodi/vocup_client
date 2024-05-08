@@ -8,6 +8,7 @@ import calendar from '@/public/assets/calendar.svg'
 import learn from '@/public/assets/learn.svg'
 import statspic from '@/public/assets/stats.svg'
 import { BarChart, Bar, PieChart, Pie, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts'
+import { NextPage } from 'next'
 
 
 const ChartWrap = ({ children }: { children : React.ReactNode }) => {
@@ -104,6 +105,30 @@ const Stats = (user: UserState) => {
   let days = 0;
   // get details from session storage
   const url = 'https://vocup.wigit.com.ng/getwords';
+
+  // ------------------------------------------------------------------------------------------------------------------------------------------------
+  // for local dev, uncomment the following line, and comment the one above
+  // const url = 'http://127.0.0.1:8080/getwords';
+  const [ selected, setSelected ] = useState<string | null>(null);
+
+  const handleSelected  = (name:string) => {
+    name === selected ? setSelected(null) : setSelected(name)
+  };
+
+  interface ItemProps {
+    name: string
+  }
+
+  const SingleAccordion:NextPage<ItemProps> = ({ name }) => {
+    return (
+        <div onClick={() => {handleSelected(name)}} className='bg-pink text-grey mb-6'>
+        <div className='flex justify-between bg-blue p-6 text-xl'><p className='pr-8'>{name}</p><p>+</p></div>
+        {selected === name && <p>{name}&apos;s meaning coming soon </p> }
+        </div>
+    )
+  };
+
+
   useEffect(() => {
     //get saved words
     const getStats = async () => {
@@ -131,13 +156,16 @@ const Stats = (user: UserState) => {
   return (
     <div className='text-light_text p-2 bg-slate-900 min-h-[100vh] min-w-[100vw]'>
       <div className='p-4'>
-        <div> Words to be revisted:</div>
-        <div></div>
-        <div>{statsData && statsData.words.map((word) => (
-          <button className='block hover:text-purple' key={word.id}>{word.name}</button>
-        ))}</div>
+        <div className='font-bold text-[1.2rem] capitalize p-2 text-center'> Words to be revisted:</div>
+        <div>{statsData && 
+        statsData.words.map(item => (
+          <div key={item.id}>
+              { <SingleAccordion  name={item.name} /> }
+          </div>
+          ) )}
+        </div>
       </div>
-      <h1>Stats Dashboard</h1>
+      <h1 className='font-bold text-[1.2rem] capitalize p-2 text-center'>Stats Dashboard</h1>
       <GeneralStats words={statsData.word_count} days={daysLearning}/>
       <div className="flex flex-wrap justify-center items-center mt-4 gap-8 p-2 md:p-12 ">
         <ChartWrap>
