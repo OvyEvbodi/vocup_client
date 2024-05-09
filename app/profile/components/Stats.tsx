@@ -151,7 +151,7 @@ const Stats = (user: UserState) => {
   // show words learned by month, for 12 months
   // word count
   // show word learned today
-  // how quickly revisted words are learned??
+  // how quickly revisted words are learned?
 
   return (
     <div className='text-light_text p-2 bg-slate-900 min-h-[100vh] min-w-[100vw]'>
