@@ -104,11 +104,11 @@ const Stats = (user: UserState) => {
   const [ firstWordDate, setFirstWordDate ] = useState<Date | undefined>();
   let days = 0;
   // get details from session storage
-  const url = 'https://vocup.wigit.com.ng/getwords';
+  // const url = 'https://vocup.wigit.com.ng/getwords';
 
   // ------------------------------------------------------------------------------------------------------------------------------------------------
   // for local dev, uncomment the following line, and comment the one above
-  // const url = 'http://127.0.0.1:8080/getwords';
+  const url = 'http://127.0.0.1:8080/getwords';
   const [ selected, setSelected ] = useState<string | null>(null);
 
   const handleSelected  = (name:string) => {

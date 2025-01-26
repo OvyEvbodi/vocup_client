@@ -2,13 +2,13 @@
 // import BoopButton from '@/components/WordLookUp'
 import ProfileSection from './components/ProfileSection'
 import useUserContext from '@/contexts/UserContext'
-import useSignInContext from '@/contexts/SignInContext'
+import UseSignInContext from '@/contexts/SignInContext'
 import Link from 'next/link';
 
 const Profile = () => {
 
   const { User } = useUserContext();
-  const { isSignedIn } = useSignInContext();
+  const { isSignedIn } = UseSignInContext();
   return (
   <main>
     <div>

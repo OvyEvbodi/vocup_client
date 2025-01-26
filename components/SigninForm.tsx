@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import useSignInContext from '@/contexts/SignInContext'
+import UseSignInContext from '@/contexts/SignInContext'
 import axios, { AxiosError } from 'axios'
 import Link from 'next/link'
 import useUserContext from '@/contexts/UserContext'
@@ -12,7 +12,7 @@ import Button, { ButtonProps } from '@/components/Button'
 const SigninForm = () => {
 
   const router = useRouter();
-  const { isSignedIn, setIsSignedIn } = useSignInContext();
+  const { isSignedIn, setIsSignedIn } = UseSignInContext();
   const { User: { email }, userDispatch } = useUserContext();
   const [ password, setPassword ] = useState<string>('');
   const [ emailError, setEmailError ] = useState<boolean>(false);
@@ -20,11 +20,11 @@ const SigninForm = () => {
   const [ serverError, setServerError ] = useState<boolean>(false);
   const [ errorMsg, setErrorMsg ] = useState<string>('');
   const [ isLoading, setIsLoading ] = useState<boolean>(false);
-  const url = 'https://vocup.wigit.com.ng/signin';
+  // const url = 'https://vocup.wigit.com.ng/signin';
 
   // -------------------------------------------------------------------------------------------------------------
   // for local dev, uncomment the following line, and comment the one above
-  // const url = 'http://127.0.0.1:8080/signin';
+  const url = 'http://127.0.0.1:8080/signin';
 
   const headers = {
     "Content-Type": "Application/json",

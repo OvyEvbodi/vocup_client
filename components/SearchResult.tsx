@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import useSignInContext from '@/contexts/SignInContext'
+import UseSignInContext from '@/contexts/SignInContext'
 import axios from 'axios'
 
 // interface for search result query
@@ -9,7 +9,7 @@ export interface SearchResultProps {
 
 const searchResult: NextPage<SearchResultProps> = (word) => {
 
-  const { isSignedIn } = useSignInContext();
+  const { isSignedIn } = UseSignInContext();
   const data = word.data[0];
   const FormatMeanings = (meaning:any) => {
     meaning.definitions.map((item:any) => (item) )

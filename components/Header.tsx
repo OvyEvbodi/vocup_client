@@ -1,10 +1,10 @@
 'use client'
 import Link from "next/link";
-import useSignInContext from "@/contexts/SignInContext";
+import UseSignInContext from "@/contexts/SignInContext";
 
 const Header = () => {
 
-  const { isSignedIn } = useSignInContext();
+  const { isSignedIn } = UseSignInContext();
   return (
     <header className="text-dark_text p-4  h-[8vh] flex justify-between">
       <h1 className="font-extrabold text-xl lg:text-3xl">VocUp</h1>

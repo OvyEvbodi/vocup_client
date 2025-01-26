@@ -26,5 +26,5 @@ export const  SignInContextProvider = ({ children }: {children: React.ReactNode}
   )
 };
 
-const useSignInContext = () => useContext(SignInContext);
-export default useSignInContext
+const UseSignInContext = () => useContext(SignInContext);
+export default UseSignInContext

@@ -1,13 +1,13 @@
 'use client'
 import Button, { ButtonProps } from '@/components/Button'
-import useSignInContext from '@/contexts/SignInContext'
+import UseSignInContext from '@/contexts/SignInContext'
 import { useRouter } from 'next/navigation'
 import useUserContext from '@/contexts/UserContext'
 import { useEffect } from 'react'
 
 const Signout = () => {
 
-  const { isSignedIn, setIsSignedIn } = useSignInContext();
+  const { isSignedIn, setIsSignedIn } = UseSignInContext();
   const { userDispatch } = useUserContext();
   const router = useRouter();
   // set sign in context to false
