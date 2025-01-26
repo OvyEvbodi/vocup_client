@@ -12,8 +12,7 @@ export default function Home() {
           </div>
           <div className=" hero_description">
             <p className="text-faint_text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut aliquam lorem.
-              Fusce tempor viverra massa.
+              A quick way to search for words, their meanings, part of speech, and how to pronounce them.
             </p>
           </div>
           <button className="bg-grey text-light_text hero_button p-2 rounded-sm font-bold text-lg">
